@@ -1,0 +1,21 @@
+/* SplashScreen.css */
+.splash-screen {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #1a1a1a;
+    color: #d1ff00;
+    font-size: 2.5rem;
+    font-weight: bold;
+    animation: fadeOut 1.5s ease forwards;
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
