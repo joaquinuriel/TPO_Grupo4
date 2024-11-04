@@ -1,16 +1,20 @@
 package com.example.gympal.model;
 
+import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 
 import java.util.Date;
 
 @Entity
+@DiscriminatorValue("BAJAR_PESO")
 public class BajarDePeso extends Objetivo {
 
-    private float pesoObjetivo;
+    private double pesoInicial;
+    private double pesoObjetivo;
 
-    public BajarDePeso(Date fechaInicio, Socio socio, float pesoObjetivo) {
+    public BajarDePeso(Date fechaInicio, Socio socio, double pesoInicial, double pesoObjetivo) {
         super(fechaInicio, socio);
+        this.pesoInicial = pesoInicial;
         this.pesoObjetivo = pesoObjetivo;
     }
 
@@ -19,20 +23,29 @@ public class BajarDePeso extends Objetivo {
     }
 
     @Override
-    public boolean verificarCumplimiento() {
-        if (getSocio().getPeso() <= pesoObjetivo) {
-            marcarCumplido();
-            return true;
+    public void calcularProgreso() {
+        double pesoActual = getSocio().getPeso(); // Suponiendo que Socio tiene un método getPeso()
+        if (pesoActual <= pesoObjetivo) {
+            setProgreso(100.0);
+        } else {
+            setProgreso(((pesoInicial - pesoActual) / (pesoInicial - pesoObjetivo)) * 100);
         }
-        return false;
     }
 
-    // Getters y setters
-    public float getPesoObjetivo() {
+    // Getters y Setters
+    public double getPesoInicial() {
+        return pesoInicial;
+    }
+
+    public void setPesoInicial(double pesoInicial) {
+        this.pesoInicial = pesoInicial;
+    }
+
+    public double getPesoObjetivo() {
         return pesoObjetivo;
     }
 
-    public void setPesoObjetivo(float pesoObjetivo) {
+    public void setPesoObjetivo(double pesoObjetivo) {
         this.pesoObjetivo = pesoObjetivo;
     }
 }

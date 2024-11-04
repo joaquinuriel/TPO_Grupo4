@@ -14,6 +14,7 @@ public abstract class Objetivo {
 
     private Date fechaInicio;
     private boolean cumplido;
+    private double progreso; // nuevo atributo de progreso
 
     @ManyToOne
     @JoinColumn(name = "socio_id")
@@ -25,9 +26,16 @@ public abstract class Objetivo {
         this.fechaInicio = fechaInicio;
         this.socio = socio;
         this.cumplido = false;
+        this.progreso = 0.0; // inicializa el progreso en 0
     }
 
-    public abstract boolean verificarCumplimiento();
+    // Metodo abstracto para que cada subclase defina cómo calcular el progreso
+    public abstract void calcularProgreso();
+
+    // Metodo para verificar si el objetivo ha sido cumplido
+    public boolean verificarCumplimiento() {
+        return progreso >= 100.0;
+    }
 
     public void marcarCumplido() {
         this.cumplido = true;
@@ -64,6 +72,14 @@ public abstract class Objetivo {
 
     public void setSocio(Socio socio) {
         this.socio = socio;
+    }
+
+    public double getProgreso() {
+        return progreso;
+    }
+
+    public void setProgreso(double progreso) {
+        this.progreso = progreso;
     }
 }
 

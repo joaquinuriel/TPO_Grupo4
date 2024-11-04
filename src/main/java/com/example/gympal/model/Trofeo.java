@@ -9,7 +9,6 @@ public class Trofeo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String nombre;
     private Date fechaOtorgamiento;
 
@@ -17,13 +16,17 @@ public class Trofeo {
     @JoinColumn(name = "socio_id")
     private Socio socio;
 
-    public Trofeo() {}
 
     public Trofeo(String nombre, Date fechaOtorgamiento, Socio socio) {
         this.nombre = nombre;
         this.fechaOtorgamiento = fechaOtorgamiento;
         this.socio = socio;
     }
+
+    public Trofeo() {
+
+    }
+
 
     // Getters y setters
     public Long getId() {
