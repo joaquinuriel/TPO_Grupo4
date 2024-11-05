@@ -28,9 +28,29 @@ public class Socio {
     @OneToOne
     private Rutina rutina;
 
+    @OneToOne
+    private IAdapterAuth adapterAuth;
+    @OneToOne
+    private IAdapterBalanza adapterBalanza;
+    @OneToOne
+    private IAdapterMedicion adapterMedicion;
 
     private float masaMuscular; // Masa muscular del socio
     private float porcentajeGrasa; // Porcentaje de grasa del socio
+
+    public void agregarMedicion() {
+        Medicion medicion = new Medicion();
+        float peso = adapterBalanza.obtenerPeso(this);
+        MedicionBalanzaDTO dto = adapterMedicion.obtenerValoresActuales(this);
+        medicion.setPeso(peso);
+        medicino.setMasaMuscular(dto.grasaMuscular);
+        medicion.porcentajeGrasa(dto.porcentajeGrasa);
+        this.mediciones.add(medicion);
+    }
+
+    public Medicion ultimaMedicion() {
+        return mediciones.get(mediciones.size - 1);
+    }
 
 
     // Metodo para verificar si cumplió la rutina perfectamente

@@ -10,7 +10,8 @@ public class TonificarCuerpo extends Objetivo {
     private float porcentajeGrasaObjetivo;
 
     public TonificarCuerpo(Date fechaInicio, Socio socio, float masaMuscularObjetivo, float porcentajeGrasaObjetivo) {
-        super(fechaInicio, socio);
+        super(socio);
+        this.fechaInicio = new Date();
         this.masaMuscularObjetivo = masaMuscularObjetivo;
         this.porcentajeGrasaObjetivo = porcentajeGrasaObjetivo;
     }
@@ -21,7 +22,6 @@ public class TonificarCuerpo extends Objetivo {
     public boolean verificarCumplimiento() {
         Socio socio = getSocio();
         if (socio.getMasaMuscular() >= masaMuscularObjetivo && socio.getPorcentajeGrasa() <= porcentajeGrasaObjetivo) {
-            marcarCumplido();
             return true;
         }
         return false;

@@ -9,37 +9,27 @@ public class Entrenamiento {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private boolean completo;
+    private boolean completo = false;
 
     @ManyToOne
     @JoinColumn(name = "rutina_id")
     private Rutina rutina;
 
+    private Date fechaInicio = Date.now();
+
     public Entrenamiento() {}
 
-    public Entrenamiento(boolean completo) {
-        this.completo = completo;
-    }
-
     public boolean estaCompleto() {
-        return completo;
+        for (Ejercicio ejercicio : ejercicios) {
+            if (!ejercicio.getRealizado()) 
+                return false;
+            return true;
+        }
     }
 
     // Getters y setters
     public Long getId() {
         return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public boolean isCompleto() {
-        return completo;
-    }
-
-    public void setCompleto(boolean completo) {
-        this.completo = completo;
     }
 
     public Rutina getRutina() {

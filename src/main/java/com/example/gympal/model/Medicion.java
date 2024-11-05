@@ -21,3 +21,7 @@ public class Medicion {
         return fechaMedicion;
     }
 }
+
+// select * from trofeos where socio_id = socio;
+// select * from socios where trofeo_id = trofeo;
+// select * from socio_trofeos where socio_id = socio; // socio_id - trofeo_id;

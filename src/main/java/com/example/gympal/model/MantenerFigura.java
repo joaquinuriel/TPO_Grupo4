@@ -10,7 +10,8 @@ public class MantenerFigura extends Objetivo {
     private float margenPeso;
 
     public MantenerFigura(Date fechaInicio, Socio socio, float pesoInicial, float margenPeso) {
-        super(fechaInicio, socio);
+        super(socio);
+        this.fechaInicio = new Date();
         this.pesoInicial = pesoInicial;
         this.margenPeso = margenPeso;
     }

@@ -18,9 +18,9 @@ public class Rutina {
 
     public Rutina() {}
 
-    public Rutina(List<Entrenamiento> entrenamientos, Date fechaInicio) {
+    public Rutina(List<Entrenamiento> entrenamientos) {
         this.entrenamientos = entrenamientos;
-        this.fechaInicio = fechaInicio;
+        this.fechaInicio = new Date();
     }
 
     // Método para verificar si la rutina se ha cumplido a la perfección
@@ -34,28 +34,16 @@ public class Rutina {
         return true;
     }
 
+    public void reforzar() {
+        
+    }
+
     // Getters y setters
     public Long getId() {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public List<Entrenamiento> getEntrenamientos() {
         return entrenamientos;
-    }
-
-    public void setEntrenamientos(List<Entrenamiento> entrenamientos) {
-        this.entrenamientos = entrenamientos;
-    }
-
-    public Date getFechaInicio() {
-        return fechaInicio;
-    }
-
-    public void setFechaInicio(Date fechaInicio) {
-        this.fechaInicio = fechaInicio;
     }
 }

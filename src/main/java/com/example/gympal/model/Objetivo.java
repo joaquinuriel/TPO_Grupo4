@@ -22,8 +22,7 @@ public abstract class Objetivo {
 
     public Objetivo() {}
 
-    public Objetivo(Date fechaInicio, Socio socio) {
-        this.fechaInicio = fechaInicio;
+    public Objetivo(Socio socio) {
         this.socio = socio;
         this.cumplido = false;
         this.progreso = 0.0; // inicializa el progreso en 0
